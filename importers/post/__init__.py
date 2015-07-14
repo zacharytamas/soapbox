@@ -19,6 +19,8 @@ class PostImporter(Importer):
       self.log("Post has not been seen before, creating new one.")
       post = Post()
       post.date_published = self._getPublishedDate()
+      post.key = ndb.Key("Post", self.subkey)
+      post.slug = data.get('slug', self.slug)
     else:
       self.log("Post has been seen before, updating existing one.")
 
@@ -30,9 +32,6 @@ class PostImporter(Importer):
 
     post.title = data['title']
     post.body = data.content
-    post.key = ndb.Key("Post", self.subkey)
-    post.slug = data.get('slug', self.slug)
-
     post.put()
 
     return post.body
