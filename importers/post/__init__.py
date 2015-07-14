@@ -21,6 +21,7 @@ class PostImporter(Importer):
       post.date_published = self._getPublishedDate()
       post.key = ndb.Key("Post", self.subkey)
       post.slug = data.get('slug', self.slug)
+      post.published = True
     else:
       self.log("Post has been seen before, updating existing one.")
 

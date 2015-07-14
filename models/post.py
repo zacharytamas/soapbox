@@ -10,3 +10,10 @@ class Post(ndb.Model):
   body = ndb.TextProperty()
   slug = ndb.StringProperty(indexed=True)
   tags = ndb.StringProperty(repeated=True)
+  published = ndb.BooleanProperty(default=True, indexed=True)
+
+  @classmethod
+  def getLatest(cls, count=5):
+    return (Post.query(Post.published == True)
+                .order(-Post.date_published)
+                .fetch(limit=count))
