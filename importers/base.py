@@ -1,6 +1,7 @@
 
 from google.appengine.api import urlfetch
 import frontmatter
+import logging
 
 BASE_URI = "https://raw.githubusercontent.com/zacharytamas/web-data/master/"
 
@@ -15,6 +16,9 @@ class Importer(object):
     self.key = key
     self.subkey = key.split("/")[1]
     self.slug = self._getSlug(key)
+
+  def log(self, s):
+    logging.info("I/%s : %s" % (self.__class__.__name__, s))
 
   def _getSlug(self, key):
     return key.split("/")[2].replace(".md", "")

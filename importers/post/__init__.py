@@ -11,16 +11,21 @@ class PostImporter(Importer):
   """Importer for Posts."""
 
   def process(self):
+    self.log("Starting to process key: " + self.key)
     data = self._getData()
     post = self._getExistingPost()
 
     if not post:
+      self.log("Post has not been seen before, creating new one.")
       post = Post()
       post.date_published = self._getPublishedDate()
+    else:
+      self.log("Post has been seen before, updating existing one.")
 
     # As a precaution, if the post has a status that is draft, ignore it.
     if data.get('status'):
       if data['status'] == "draft":
+        self.log("Caught post in Draft mode, ending processing.")
         return
 
     post.title = data['title']
