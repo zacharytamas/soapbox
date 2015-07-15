@@ -5,12 +5,13 @@ api_version: 1
 threadsafe: yes
 
 handlers:
+
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
 
 - url: .*
-  script: soapbox.main.app
+  script: main.app
 
 libraries:
 - name: webapp2

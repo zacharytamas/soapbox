@@ -3,8 +3,8 @@
 from datetime import datetime
 from google.appengine.ext import ndb
 
-from soapbox.models import Post
-from soapbox.importers.base import Importer
+from blog.models import Post
+from importers.base import Importer
 
 
 class PostImporter(Importer):

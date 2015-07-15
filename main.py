@@ -5,10 +5,10 @@ import os
 import webapp2
 
 from importers import parse_path
-from models import Post
+from blog.models import Post
 
 JINJA_ENVIRONMENT = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), "../templates")),
+    loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), "templates")),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
