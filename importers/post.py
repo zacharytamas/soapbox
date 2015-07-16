@@ -1,5 +1,6 @@
 """Importer for Posts"""
 
+import markdown
 from datetime import datetime
 from google.appengine.ext import ndb
 
@@ -32,10 +33,22 @@ class PostImporter(Importer):
         return
 
     post.title = data['title']
-    post.body = data.content
+    post.body = self._renderBody(data.content)
     post.put()
 
     return post.body
+
+  def _renderBody(self, content):
+    body = markdown.markdown(content)
+    body = self._inflateStatic(body)
+    return body
+
+  def _inflateStatic(self, content):
+    self.log("TODO Inflate static files")
+    # TODO This will check the HTML for any relative links to static assets
+    # such as images, upload them to Google Cloud, and then replace their
+    # link with the public link of their copy.
+    return content
 
   def _getPublishedDate(self):
     # This creates a date to be used at this Post's published date. It's
