@@ -27,9 +27,14 @@ class HomepageHandler(webapp2.RequestHandler):
 
 class UpdateHandler(webapp2.RequestHandler):
   def get(self):
-    parse_path("posts/2014-01-20-how-i-work-coding/how-i-work-coding.md").process()
-    parse_path("posts/2014-01-02-es6-arrow-functions/es6-arrow-functions.md").process()
-    parse_path("posts/2014-01-12-annual-goals/annual-goals.md").process()
+    posts = [
+      "posts/2014-01-20-how-i-work-coding/how-i-work-coding.md",
+      "posts/2014-01-02-es6-arrow-functions/es6-arrow-functions.md",
+      "posts/2014-01-12-annual-goals/annual-goals.md"
+    ]
+
+    for key in posts:
+      parse_path(key).process()
 
 
 app = webapp2.WSGIApplication([
