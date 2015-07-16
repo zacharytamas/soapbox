@@ -15,8 +15,9 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
   def get(self):
-    importer = parse_path("posts/2014-01-20-how-i-work-coding/how-i-work-coding.md")
-    importer.process()
+    parse_path("posts/2014-01-20-how-i-work-coding/how-i-work-coding.md").process()
+    parse_path("posts/2014-01-02-es6-arrow-functions/es6-arrow-functions.md").process()
+    parse_path("posts/2014-01-12-annual-goals/annual-goals.md").process()
 
     posts = Post.getLatest()
 
