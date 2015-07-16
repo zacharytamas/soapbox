@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~1.0.6"
+    "polymer": "Polymer/polymer#~1.0.6",
+    "paper-toolbar": "PolymerElements/paper-toolbar#~1.0.4"
   }
 }
