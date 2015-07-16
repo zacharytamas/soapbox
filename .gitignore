@@ -3,5 +3,6 @@ appengine-generated/
 
 *.pyc
 libs
-bower_components
+/bower_components
 node_modules
+static/dist
