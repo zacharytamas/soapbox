@@ -19,11 +19,25 @@ gulp.task('copy', function() {
   var elements = gulp.src(['static/elements/**/*.html'])
     .pipe(gulp.dest(distPath('elements')));
 
-  var vulcanized = gulp.src([distPath('elements/components-core.html')])
-    .pipe($.rename('components-core.vulcanized.html'))
-    .pipe(gulp.dest('static/dist/components'));
+  var vulcanized = gulp.src([distPath('elements/core.html')])
+    .pipe($.rename('core.vulcanized.html'))
+    .pipe(gulp.dest(distPath('elements')));
 
   return merge(bower, elements, vulcanized)
     .pipe($.size({title: 'copy'}));
 
+});
+
+// Vulcanize imports
+gulp.task('vulcanize', function() {
+  var DEST_DIR = 'static/dist/elements';
+
+  return gulp.src('static/dist/elements/core.vulcanized.html')
+    .pipe($.vulcanize({
+      stripComments: true,
+      inlineCss: true,
+      inlineScripts: true
+    }))
+    .pipe(gulp.dest(DEST_DIR))
+    .pipe($.size({title: 'vulcanize'}));
 });
