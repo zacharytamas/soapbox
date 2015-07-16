@@ -13,6 +13,11 @@
   "author": "Zachary Jones <zacharytamas@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-size": "^1.2.3",
+    "gulp-vulcanize": "^6.0.1",
+    "merge-stream": "^0.1.8"
   }
 }
