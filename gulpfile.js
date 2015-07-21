@@ -1,14 +1,26 @@
 
-'use strict';
-
-// Include Gulp & Tools We'll Use
-var gulp = require('gulp'),
-    $ = require('gulp-load-plugins')(),
-    merge = require('merge-stream');
+var gulp = require('gulp');
+var $ = require('gulp-load-plugins')();
+var browserSync = require('browser-sync');
+var merge = require('merge-stream');
+var path = require('path');
 
 function distPath(path) {
   return 'static/dist/' + path;
 }
+
+var styleTask = function(stylesPath, srcs) {
+  return gulp
+    .src(srcs.map(function(src) {
+      return path.join('static', stylesPath, src); }
+    ))
+    // .pipe($.changed('static/' + stylesPath, {extension: '.css'}))
+    // TODO possibly add CSS minification here
+    .pipe(gulp.dest('static/dist/' + stylesPath))
+    .pipe($.size({title: stylesPath}));
+};
+
+gulp.task('styles', styleTask.bind(gulp, '', ['*.css']));
 
 gulp.task('copy', function() {
   var bower = gulp.src([
@@ -38,4 +50,24 @@ gulp.task('vulcanize', function() {
     }))
     .pipe(gulp.dest(DEST_DIR))
     .pipe($.size({title: 'vulcanize'}));
+});
+
+gulp.task('develop', function() {
+
+  browserSync({
+    notify: false,
+    logPrefix: 'PSK',
+    snippetOptions: {
+      rule: {
+        match: '<span id="browser-sync-binding"></span>',
+        fn: function(snippet) {
+          return snippet;
+        }
+      }
+    },
+    proxy: 'localhost:8080'
+  });
+
+  gulp.watch(['static/*.css'], ['styles']);
+  gulp.watch(['static/dist/*.css'], browserSync.reload);
 });
