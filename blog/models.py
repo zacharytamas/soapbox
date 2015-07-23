@@ -11,6 +11,7 @@ class Post(ndb.Model):
   slug = ndb.StringProperty(indexed=True)
   tags = ndb.StringProperty(repeated=True)
   published = ndb.BooleanProperty(default=True, indexed=True)
+  frontmatter = ndb.JsonProperty()
 
   @classmethod
   def getLatest(cls, count=5):
