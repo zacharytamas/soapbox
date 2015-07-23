@@ -34,6 +34,7 @@ class PostImporter(Importer):
 
     post.title = data['title']
     post.body = self._renderBody(data.content)
+    post.frontmatter = data.to_dict()
     post.put()
 
     return post.body
