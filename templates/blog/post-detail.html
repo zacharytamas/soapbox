@@ -12,6 +12,7 @@
     {% if post.frontmatter.subtitle %}
       <h3>{{post.frontmatter.subtitle }}</h3>
     {% endif %}
+    <div class="post-meta">{{post.date_published}}</div>
   </header>
 
   {% autoescape off %}

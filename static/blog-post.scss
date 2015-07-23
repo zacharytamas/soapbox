@@ -1,0 +1,29 @@
+@import 'variables';
+
+article.post {
+
+  header.post-title {
+    h1 {
+      font-size: 2rem;
+      color: $title-color;
+      text-align: center;
+    }
+
+    .post-meta {
+      color: #9a9a9a;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    line-height: 1.25;
+    color: $heading-color;
+    text-rendering: optimizeLegibility;
+  }
+}
