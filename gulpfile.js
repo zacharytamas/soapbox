@@ -22,6 +22,14 @@ var styleTask = function(stylesPath, srcs) {
 
 gulp.task('styles', styleTask.bind(gulp, '', ['*.css']));
 
+gulp.task('sass', function() {
+  return gulp
+    .src(['static/*.scss'])
+    .pipe($.sass().on('error', $.sass.logError))
+    .pipe(gulp.dest('static/dist'))
+    .pipe($.size({title: 'sass'}));
+});
+
 gulp.task('copy', function() {
   var bower = gulp.src([
     'bower_components/**/*'
@@ -69,5 +77,6 @@ gulp.task('develop', function() {
   });
 
   gulp.watch(['static/*.css'], ['styles']);
+  gulp.watch(['static/*.scss'], ['sass']);
   gulp.watch(['static/dist/*.css'], browserSync.reload);
 });
