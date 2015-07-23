@@ -22,6 +22,11 @@ class PostDetailHandler(BlogHandler):
 
   def get(self, post_slug):
     post = Post.query(Post.slug == post_slug).get()
+
+    if not post:
+      # TODO Throw a 404.
+      pass
+
     template = JINJA_ENVIRONMENT.get_template('blog/post-detail.html')
 
     context = {
