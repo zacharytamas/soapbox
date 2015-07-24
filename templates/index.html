@@ -1,13 +1,27 @@
 {% extends "base.html" %}
 
 {% block body %}
-  {% for post in posts %}
-    <h1>{{post.title}}</h1>
 
-    {% autoescape off %}
-      {{post.body}}
-    {% endautoescape %}
+  <section>
+    <h1>Hello, I'm Zachary.</h1>
+    <p>
+      I'm a full-stack developer and designer living in Atlanta. I work as a
+      contractor providing full-stack and mobile development consulting. I've
+      been working on the web for over ten years now, having worked with
+      several awesome companies on several awesome products. For a longer bio,
+      you can <a href="/about/">check this out</a>.
+    </p>
+  </section>
 
-    <hr>
-  {% endfor %}
+  <section>
+    <h2>Latest Writings</h2>
+    <ul class="posts-big-list">
+      {% for post in posts %}
+        <li>
+          <span>{{post.date_published}}</span>
+          <a href="/posts/{{post.slug}}/">{{post.title}}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+
 {% endblock %}
