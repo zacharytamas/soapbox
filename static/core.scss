@@ -1,7 +1,7 @@
 @import 'variables';
 
 html {
-  line-height: 1.5;
+  line-height: $line-height;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
@@ -29,17 +29,22 @@ footer.site {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: $line-height;
+}
+
+
+////////////////////////////////////////////////////////////////
+// Media queries.
+////////////////////////////////////////////////////////////////
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }
 
 @media (min-width: 960px) {
   html {
     font-size: 18px;
-  }
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
   }
 }
