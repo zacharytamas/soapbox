@@ -1,0 +1,30 @@
+
+@import '_variables';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-heading;
+  margin: 1.5rem 0 0.5rem;
+  font-weight: bold;
+  line-height: 1.25;
+  color: $heading-color;
+  text-rendering: optimizeLegibility;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: $line-height;
+}
+
+a {
+  color: $link-color;
+
+  &:visited {
+    color: $link-color-visited;
+    font-weight: bold;
+  }
+}
