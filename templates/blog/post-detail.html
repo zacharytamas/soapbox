@@ -12,11 +12,15 @@
     {% if post.frontmatter.subtitle %}
       <h3>{{post.frontmatter.subtitle }}</h3>
     {% endif %}
-    <div class="post-meta">{{post.date_published}}</div>
   </header>
 
   {% autoescape off %}
     {{post.body}}
   {% endautoescape %}
+
+  <section class="post-meta">
+    Posted <b>{{post.date_published|date}}</b>
+  </section>
+
 </article>
 {% endblock %}

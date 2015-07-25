@@ -1,31 +1,23 @@
 #!/usr/bin/env python
 
-import jinja2
-import os
 import webapp2
-from os.path import join
 from webapp2_extras import routes
 
 from importers import parse_path
+from utils import render_to_text
 from blog.models import Post
 
 from blog.routes import routes as blog_routes
 
-JINJA_ENVIRONMENT = jinja2.Environment(
-  loader=jinja2.FileSystemLoader(join(os.path.dirname(__file__), "templates")),
-  extensions=['jinja2.ext.autoescape'],
-  autoescape=True)
-
 
 class HomepageHandler(webapp2.RequestHandler):
   def get(self):
-    template = JINJA_ENVIRONMENT.get_template('index.html')
 
     context = {
       "posts": Post.getLatest()
     }
 
-    self.response.write(template.render(context))
+    self.response.write(render_to_text('index.html', context))
 
 
 class UpdateHandler(webapp2.RequestHandler):

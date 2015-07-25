@@ -1,21 +1,14 @@
 
-import jinja2
-import os
 import webapp2
-from os.path import join
 
-from models import Post
+from utils import render_to_text
 
-# TODO Extract this into one shared environment for the whole site.
-# This is a copy-paste job for rapid iteration.
-JINJA_ENVIRONMENT = jinja2.Environment(
-  loader=jinja2.FileSystemLoader(join(os.path.dirname(__file__), "../templates")),
-  extensions=['jinja2.ext.autoescape'],
-  autoescape=True)
+from .models import Post
 
 
 class BlogHandler(webapp2.RequestHandler):
-  pass
+  def render_to_response(self, template_name, context):
+    self.response.write(render_to_text(template_name, context))
 
 
 class PostDetailHandler(BlogHandler):
@@ -27,10 +20,8 @@ class PostDetailHandler(BlogHandler):
       # TODO Throw a 404.
       pass
 
-    template = JINJA_ENVIRONMENT.get_template('blog/post-detail.html')
-
     context = {
       'post': post
     }
 
-    self.response.write(template.render(context))
+    self.render_to_response('blog/post-detail.html', context)
