@@ -1,29 +1,38 @@
 @import 'variables';
 
+$post-title-alignment: left;
+
 article.post {
 
   header.post-title {
     margin-bottom: $line-height;
 
     h1 {
-      font-size: 2.222222222rem;
+      font-size: 2.888888889rem;  // 52 / $line-height
       color: $title-color;
-      text-align: center;
+      text-align: $post-title-alignment;
       font-weight: normal;
+      margin-top: 6rem;
     }
 
     h3 {
-      text-align: center;
+      text-align: $post-title-alignment;
       color: rgba(0, 0, 0, 0.5);
       margin: 0;
     }
   }
 
   blockquote {
-    padding: $line-height/2 1rem;
+    padding: $line-height/2 $layout-bleed-small/2;
     margin: 0 0 $line-height;
     color: #777;
-    border-left: 0.5rem solid $blockquote-border-color;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px rgba(0, 0, 0, .05) solid;
+    border-bottom: 0.25rem solid $blockquote-border-color;
+
+    margin-left: -$layout-bleed-small/2;
+    margin-right: -$layout-bleed-small/2;
+
 
     &.large {
       font-size: 1.5rem;
