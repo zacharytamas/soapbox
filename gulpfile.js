@@ -35,7 +35,7 @@ gulp.task('copy', function() {
     'bower_components/**/*'
   ]).pipe(gulp.dest(distPath('bower_components')));
 
-  var elements = gulp.src(['static/elements/**/*.html'])
+  var elements = gulp.src(['static/elements/**/*.html', 'static/elements/*.html'])
     .pipe(gulp.dest(distPath('elements')));
 
   var vulcanized = gulp.src([distPath('elements/core.html')])
@@ -78,5 +78,6 @@ gulp.task('develop', function() {
 
   gulp.watch(['static/*.css'], ['styles']);
   gulp.watch(['static/*.scss'], ['sass']);
+  gulp.watch(['static/elements/**/*'], ['copy', 'vulcanize']);
   gulp.watch(['static/dist/*.css'], browserSync.reload);
 });

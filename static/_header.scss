@@ -1,11 +1,13 @@
 
-header[role='banner'] {
-  margin-top: 2rem;
-  margin-bottom: 3rem;
+#siteHeader {
+  // padding-top: 1rem;
+  // padding-bottom: 1rem;
+  background: $color-green;
 
   nav {
     ul {
       padding: 0;
+      margin: 0;
 
       li {
         display: inline;
@@ -15,6 +17,7 @@ header[role='banner'] {
 
         a {
           text-decoration: none;
+          color: white;
         }
       }
     }
