@@ -18,3 +18,9 @@ class Post(ndb.Model):
     return (Post.query(Post.published == True)
                 .order(-Post.date_published)
                 .fetch(limit=count))
+
+  @classmethod
+  def getAll(cls):
+    return (Post.query(Post.published == True)
+                .order(-Post.date_published)
+                .fetch())

@@ -20,8 +20,23 @@ class PostDetailHandler(BlogHandler):
       # TODO Throw a 404.
       pass
 
-    context = {
+    self.render_to_response('blog/post-detail.html', {
       'post': post
-    }
+    })
 
-    self.render_to_response('blog/post-detail.html', context)
+
+class PostsIndexHandler(BlogHandler):
+
+  def get(self):
+    # TODO This page should be basically entirely cached since it will grow to
+    # be increasingly less performant as I post more.
+    posts = Post.getAll()
+
+    if not posts:
+      # TODO This shouldn't actually happen because I will always have
+      # at least one Post.
+      pass
+
+    self.render_to_response('blog/post-index.html', {
+      "posts": posts
+    })

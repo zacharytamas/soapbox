@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>Posts from the past</h1>
+
+  {% for post in posts %}
+    <a href="/posts/{{post.slug}}/">{{post.title}}</a><br>
+  {% endfor %}
+
+{% endblock %}
