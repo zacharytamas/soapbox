@@ -4,6 +4,14 @@
 html {
   line-height: $line-height;
   font-family: $font-base;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 960px) {
+    font-size: 18px;
+  }
 }
 
 body {
@@ -24,26 +32,14 @@ footer.site {
 }
 
 .container {
-  max-width: 36rem;
-  padding: 0 1rem;
+  width: 100% - $layout-bleed*2;
+  max-width: 870px;
+  padding: 0 .75em;
   margin: 0 auto;
+
+  @media (max-width: 480px) {
+    width: 100% - $layout-bleed-small*2;
+  }
 }
 
 @import 'type';
-
-
-////////////////////////////////////////////////////////////////
-// Media queries.
-////////////////////////////////////////////////////////////////
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 960px) {
-  html {
-    font-size: 18px;
-  }
-}
