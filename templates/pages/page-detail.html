@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="/static/blog-post.css" media="screen">
+{% endblock %}
+
+{% block body %}
+<article class="post">
+
+  <header class="post-title">
+    <h1>{{page.title}}</h1>
+    {% if page.frontmatter.subtitle %}
+      <h3>{{page.frontmatter.subtitle }}</h3>
+    {% endif %}
+  </header>
+
+  {% autoescape off %}
+    {{page.body}}
+  {% endautoescape %}
+
+  <section class="post-meta">
+    Posted <b>{{page.date_published|date}}</b>
+  </section>
+
+</article>
+{% endblock %}

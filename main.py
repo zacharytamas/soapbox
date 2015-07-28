@@ -8,6 +8,7 @@ from utils import render_to_text
 from blog.models import Post
 
 from blog.routes import routes as blog_routes
+from pages.handlers import PageHandlerFactory
 
 
 class HomepageHandler(webapp2.RequestHandler):
@@ -25,7 +26,9 @@ class UpdateHandler(webapp2.RequestHandler):
     posts = [
       "posts/2014-01-20-how-i-work-coding/how-i-work-coding.md",
       "posts/2014-01-02-es6-arrow-functions/es6-arrow-functions.md",
-      "posts/2014-01-12-annual-goals/annual-goals.md"
+      "posts/2014-01-12-annual-goals/annual-goals.md",
+
+      "pages/about.md"
     ]
 
     for key in posts:
@@ -34,6 +37,7 @@ class UpdateHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
   ('/', HomepageHandler),
+  ('/about/', PageHandlerFactory.HandlerFor('about')),
 
   routes.PathPrefixRoute('/posts', blog_routes),
 

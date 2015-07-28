@@ -21,7 +21,12 @@ class Importer(object):
     logging.info("I/%s : %s" % (self.__class__.__name__, s))
 
   def _getSlug(self, key):
-    return key.split("/")[2].replace(".md", "")
+    pieces = key.split("/")
+
+    if len(pieces) == 3:
+      return pieces[2].replace(".md", "")
+    else:
+      return pieces[1].replace(".md", "")
 
   def _getData(self):
     result = urlfetch.fetch(BASE_URI + self.key)

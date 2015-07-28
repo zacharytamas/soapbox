@@ -1,5 +1,6 @@
 
 from post import PostImporter
+from page import PageImporter
 
 
 def parse_path(path):
@@ -9,3 +10,5 @@ def parse_path(path):
 
   if path_key == "posts":
     return PostImporter(path)
+  elif path_key == "pages":
+    return PageImporter(path)
