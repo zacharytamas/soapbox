@@ -14,14 +14,14 @@
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.8.0",
-    "gulp": "^3.9.0",
-    "gulp-changed": "^1.2.1",
-    "gulp-load-plugins": "^0.10.0",
+    "gulp": "^4.0.0",
+    "gulp-changed": "^3.2.0",
+    "gulp-load-plugins": "^1.5.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.4",
-    "gulp-size": "^1.2.3",
-    "gulp-vulcanize": "^6.0.1",
-    "merge-stream": "^0.1.8",
+    "gulp-sass": "^4.0.2",
+    "gulp-size": "^3.0.0",
+    "gulp-vulcanize": "^8.0.0",
+    "merge-stream": "^1.0.1",
     "vulcanize": "^1.10.1"
   }
 }
