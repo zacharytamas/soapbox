@@ -1,5 +1,7 @@
 # soapbox
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/zacharytamas/soapbox.svg)](https://greenkeeper.io/)
+
 My in-progress new website blending a AppEngine stack and GitHub as a source of data.
 
 ## Developing
